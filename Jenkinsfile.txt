@@ -4,24 +4,19 @@ pipeline {
     stages {
         stage('Build') { 
             steps { 
-                	withMaven(maven : 'hmaven') 
-			sh 'mvn clean' 
-                                                   }
-                   }
-                        
-stage('Test'){
+                sh 'make' 
+            }
+        }
+        stage('Test'){
             steps {
-                withMaven(maven : 'hmaven') 
-		sh 'mvn test'
-                			   
-                  }
-               }
+                sh 'make check'
+                
+            }
+        }
         stage('Deploy') {
             steps {
-                 withMaven(maven : 'hmaven') 
-		 sh 'make publish'
-            				    
-                  }
-                        }
-	}
+                sh 'make publish'
+            }
+        }
+    }
 }
