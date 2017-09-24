@@ -5,23 +5,10 @@ pipeline {
         stage('Build') { 
             steps { 
                 	withMaven(maven : 'hhman') {
-			sh 'maven clean compile' 
+			sh 'mvn clean compile' 
                                                    }
                    }
                         }
-        stage('Test'){
-            steps {
-                withMaven(maven : 'hhman') {
-		sh 'mvn test'
-                			   }
-                  }
-                      }
-        stage('Deploy') {
-            steps {
-                 withMaven(maven : 'hhman') {
-		 sh 'make publish'
-            				    }
-                  }
-                        }
+        
 	    }
 	}
