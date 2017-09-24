@@ -1,22 +1,5 @@
-pipeline {
-    agent any 
-
-    stages {
-        stage('Build') { 
-            steps { 
-                sh 'mvn install clean' 
-            }
-        }
-        stage('Test'){
-            steps {
-                sh 'make check'
-                
-            }
-        }
-        stage('Deploy') {
-            steps {
-                sh 'make publish'
-            }
-        }
-    }
+stage 'build'
+node{
+    checkout scm
+    sh 'mvn clean install'
 }
